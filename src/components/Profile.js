@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
 
 export default function Profile() {
   const [ready, setReady] = useState(false)
-  const [photo, setPhoto] = useState([])
+  const [photo, setPhoto] = useState('')
 
   const classes = useStyles()
 
@@ -43,7 +44,7 @@ export default function Profile() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={photo}
+          image={photo ? photo : null}
           title='Contemplative Reptile'
         />
         <CardContent>
