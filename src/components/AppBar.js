@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -51,11 +52,11 @@ export default function AppBar1() {
           aria-label='menu'
         ></IconButton>
         <Typography variant='h6' className={classes.title}>
-          Home
+          <Link to='/'>Home</Link>
         </Typography>
         {login && (
           <Typography variant='h6' className={classes.title}>
-            Profile
+            <Link to='/profile'>Profile</Link>
           </Typography>
         )}
 
