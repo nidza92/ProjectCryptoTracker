@@ -36,9 +36,6 @@ export default function Profile() {
     fetchPhoto()
   }, [])
 
-  if (!ready) {
-    ;<h1>not ready yet</h1>
-  }
   return (
     photo && (
       <Card className={classes.root}>
