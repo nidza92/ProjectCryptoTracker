@@ -40,24 +40,26 @@ export default function Profile() {
     ;<h1>not ready yet</h1>
   }
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={photo ? photo : null}
-          title='Contemplative Reptile'
-        />
-        <CardContent>
-          <Typography gutterBottom variant='h5' component='h2'>
-            profile photo
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size='small' color='primary' onClick={() => fetchPhoto()}>
-          click for new photo
-        </Button>
-      </CardActions>
-    </Card>
+    photo && (
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={photo}
+            title='Contemplative Reptile'
+          />
+          <CardContent>
+            <Typography gutterBottom variant='h5' component='h2'>
+              profile photo
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size='small' color='primary' onClick={() => fetchPhoto()}>
+            click for new photo
+          </Button>
+        </CardActions>
+      </Card>
+    )
   )
 }

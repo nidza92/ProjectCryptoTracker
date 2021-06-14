@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Appbar1 from '../src/components/AppBar'
 import Table1 from '../src/components/Table'
@@ -13,15 +13,7 @@ export default function BasicTable() {
     'ETHEUR',
     'EOSUSD',
   ])
-  const [newCoin, setNewCoing] = useState([])
-
-  // const [coinList1, setCoinList] = useState({
-  //   BTCUSD: { dailyChange: null, volume: null, lastPrice: null },
-  //   BTCEUR: { dailyChange: null, volume: null, lastPrice: null },
-  //   ETHUSD: { dailyChange: null, volume: null, lastPrice: null },
-  //   ETHEUR: { dailyChange: null, volume: null, lastPrice: null },
-  //   EOSUSD: { dailyChange: null, volume: null, lastPrice: null },
-  // })
+  const [loading, setLoading] = useState(true)
 
   const [coinList, setCoinList] = useState([
     { BTCUSD: { dailyChange: null, volume: null, lastPrice: null } },
@@ -30,9 +22,6 @@ export default function BasicTable() {
     { ETHEUR: { dailyChange: null, volume: null, lastPrice: null } },
     { EOSUSD: { dailyChange: null, volume: null, lastPrice: null } },
   ])
-
-  const [loading, setLoading] = useState(true)
-  const [login, setLogin] = useState(false)
 
   useEffect(() => {
     coin.forEach((coin1) => {
@@ -46,9 +35,8 @@ export default function BasicTable() {
     ws.onmessage = (msg) => {
       const stock = JSON.parse(msg.data)
       setLoading(true)
-      if (stock[1] != 'hb') {
+      if (stock[1] !== 'hb') {
         if (stock[1]) {
-          console.log(stock[1])
           let newState = coinList
           newState.forEach((item) => {
             if (cryptoCoin === Object.keys(item)[0]) {
@@ -63,9 +51,6 @@ export default function BasicTable() {
           setLoading(false)
           console.log('COIN LIST')
           console.log(coinList)
-
-          console.log('NEW STATE')
-          console.log(newState)
         }
       }
     }
